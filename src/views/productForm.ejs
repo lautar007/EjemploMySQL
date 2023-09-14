@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home del Proyecto</title>
+        <link rel="stylesheet" href="/styles/home.css"> 
+    </head>
+    <body>
+        <h1>Formulario de creación de productos.</h1>
+        <form class="formulario" action="/products" method="POST">
+            <label>Título</label>
+            <input 
+            type="text"
+            name="title"
+            placeholder="Coloque el título del producto"
+            />
+            <label>Descripción</label>
+            <textarea
+            placeholder="Coloque una descripción"
+            name="description"
+            ></textarea>
+            <label>Precio</label>
+            <input 
+            type="text"
+            name="price"
+            placeholder="Coloque el precio del producto"
+            />
+            <label>Portada</label>
+            <input 
+            type="text"
+            name="image"
+            placeholder="Coloque la URL de la portada del producto"
+            />
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
