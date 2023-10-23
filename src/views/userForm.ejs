@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Proyecto Sequelize</title>
+        <link rel="stylesheet" href="/styles/home.css"> 
+    </head>
+    <body>
+        <h1>Formulario de Registro de Usuarios</h1>
+        <form class="formulario" action="/users" method="POST" enctype="multipart/form-data">
+            <label>Nombre:</label>
+            <input name="name"/>
+            <label>Apellido:</label>
+            <input name="surname"/>
+            <label>Email:</label>
+            <input name="email"/>
+            <label>Nombre de usuario:</label>
+            <input name="username"/>
+            <label>Contraseña:</label>
+            <input name="password" type="password"/>
+            <label for="avatar">Foto de perfil:</label>
+            <input type="file" name="avatar"/>
+            <button type="submit">Registrarse</button>
+        </form>
+    </body>
+</html>

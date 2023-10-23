@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Formulario de creación de productos.</h1>
-        <form class="formulario" action="/products" method="POST">
+        <form class="formulario" action="/products" method="POST" enctype="multipart/form-data">
             <label>Título</label>
             <input 
             type="text"
@@ -26,12 +26,12 @@
             name="price"
             placeholder="Coloque el precio del producto"
             />
-            <label>Portada</label>
+            <label>Imágenes</label>
             <input 
-            type="text"
-            name="image"
-            placeholder="Coloque la URL de la portada del producto"
-            />
+            type="file"
+            name="images"
+            multiple
+            >
             <button type="submit">Enviar</button>
         </form>
     </body>

@@ -7,14 +7,43 @@
         <link rel="stylesheet" href="/styles/home.css"> 
     </head>
     <body>
+        <%
+        let images = product.image.split(',');
+        let portada = images[3];
+        let img1 = images[0];
+        let img2 = images[1];
+        let img3 = images[2];
+        console.log('Esta es la portada: ',portada);
+        %>
         <div class="productDetail">
             <h1><%=product.title%></h1>
             <h3><%=product.description%></h3>
-            <img src="<%=product.image%>">
+            <div class="detailGalery">
+                <img src="/images/films/<%=portada%>">
+                <img src="/images/films/<%=img1%>">
+                <img src="/images/films/<%=img2%>">
+                <img src="/images/films/<%=img3%>">
+            </div>
             <h2>$<%=product.price%></h2>
+            <%if(userLoged){%>
+                <div>
+                    <button class="addCart" value= "<%=product.id_product%>" name="<%=product.title%>">Agregar al Carrito</button>
+                </div>
+                <a href="/carts">
+                    <button>Ir al carrito</button>
+                </a>
+            <%} else {%>
+                <a href="/users/login">
+                    <button>Agregar al Carrito</button>
+                </a>
+                <a href="/users/login">
+                    <button>Ir al carrito</button>
+                </a>
+            <%}%>
             <a href="/">
-                <button>Volver</button>
+                <button>Volver</button> 
             </a>
         </div>
+        <script src="/scripts/addCart.js"></script>
     </body>
 </html>

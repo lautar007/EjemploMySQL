@@ -7,31 +7,43 @@
         <link rel="stylesheet" href="/styles/home.css"> 
     </head>
     <body>
-        <h1>Bienvenidos</h1>
+        <% if(userName){%>
+            <h1>Bienvenido <%=userName%></h1>
+            <button id="closeSession">Cerrar Sesión</button>
+            <img src="images/avatars/<%=userAvatar%>" class="avatarHome">
+        <%} else {%>
+            <h1>Bienvenido Invitado</h1>
+        <%}%>
         <h2>Este es un pequeño proyecto que sirve para trabajar con una base de datos:</h2>
         <p>La DB que usaremos es MySQL y el proyecto se conecta a esta DB por medio de Sequelize.</p>
         <h3>Trabajaremos con productos y usuarios.</h3>
 
         <div>
-            <a href="/products/form">
+            <a href="/products/form" id="formLink">
                 <button>Formulario de Productos</button>
             </a>
-            <button>Registro de Usuarios</button>
+            <a href="/users/form">
+                <button>Registro de Usuarios</button>
+            </a>
         </div>
+        <a href="users/login">
+            <button id="botonPrueba">Si ya estas registrado LOGEATE!</button>
+        </a>
         <hr>
         <div>
             <h2>Lista de productos</h2>
             <div class="productList">
                 <%
-                console.log(productList)
                 if(!productList){%>
                     <p>No hay productos en la DB</p>
                 <%} else {
                     productList.map(el=>{
+                        const images = el.image.split(',');
+                        const poster = images[3];
                 %>
                 <div class="productCard">
                     <h4><%=el.title%></h4>
-                    <img src="<%=el.image%>">
+                    <img src="images/films/<%=poster%>">
                     <p>$<%=el.price%></p>
                     <a href="/products/detail/<%=el.id_product%>">
                         <button>Detalle</button>

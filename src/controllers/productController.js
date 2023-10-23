@@ -7,29 +7,36 @@ const productController = {
     list: (req, res)=>{
         db.Product.findAll()
         .then(products =>{
-            res.send({result: 'Succes', payload: products})
+            res.json({result: 'Succes', payload: products})
         })
         .catch(error=>{
             res.send({result: 'Error', payload: error})
         })
     },
     detail: (req, res)=>{
-        const {id} = req.params
+        const {id} = req.params;
+        let userLoged = req.cookies.userLoged;
         db.Product.findByPk(parseInt(id))
         .then(product=>{
-            res.render('productDetail', {product})
+            res.render('productDetail', {product, userLoged})
         })
         .catch(error=>{
             res.send({result: 'Error', payload: error})
         })
     },
     post: (req, res)=>{
-        console.log(req.body);
-        const{title, description, price, image} = req.body;
+        const{title, description, price} = req.body;
 
         if(!title || !description || !price){
             res.send({result: 'Error', payload: 'Falta rellenar uno de los campos.'})
         }
+        //Para poder guardar múltiples archivos en la DB debemos guardar los nombres de los archivos captados por multer desde req.files, dentro de un arreglo aparte transformado en string:
+        let image = [];
+        req.files.forEach(e => {
+            image.push(e.filename)
+        });
+
+        image = image.toString();
 
         db.Product.create({
             title, price, description, image
